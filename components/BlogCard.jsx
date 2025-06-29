@@ -1,0 +1,1 @@
+import BlogPost from '@/pages/blog/[id]';
