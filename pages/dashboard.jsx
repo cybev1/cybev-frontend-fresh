@@ -1,16 +1,27 @@
 import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
-  const [userStats, setUserStats] = useState({ posts: 0, reactions: 0, shares: 0 });
+  const [userStats, setUserStats] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserStats = async () => {
-      const response = await fetch('/api/users/stats');
-      const data = await response.json();
-      setUserStats(data);
+      try {
+        const response = await fetch('/api/users/stats');
+        const data = await response.json();
+        setUserStats(data);
+      } catch (error) {
+        console.error('Failed to load stats:', error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchUserStats();
   }, []);
+
+  if (loading) return <p className="p-6">Loading...</p>;
+
+  if (!userStats) return <p className="p-6 text-red-500">Unable to load stats.</p>;
 
   return (
     <div className="max-w-4xl mx-auto p-6">
