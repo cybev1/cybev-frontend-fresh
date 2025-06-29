@@ -21,24 +21,19 @@ export default function BlogDetailPage() {
       });
   }, [id]);
 
+  if (loading) return <p className="p-6">Loading...</p>;
+  if (!blog) return <p className="p-6 text-red-500">Blog not found.</p>;
+
   return (
     <div className="min-h-screen p-6 bg-white text-black">
       <div className="max-w-3xl mx-auto">
-        {loading ? (
-          <p>Loading...</p>
-        ) : !blog ? (
-          <p>Blog not found.</p>
-        ) : (
-          <>
-            <h1 className="text-3xl font-bold mb-2">{blog.title}</h1>
-            <div className="text-sm text-gray-500 mb-4">
-              {new Date(blog.createdAt).toLocaleString()}
-            </div>
-            <p className="text-lg text-gray-800 whitespace-pre-wrap">
-              {blog.description}
-            </p>
-          </>
-        )}
+        <h1 className="text-3xl font-bold mb-2">{blog?.title || "Untitled"}</h1>
+        <div className="text-sm text-gray-500 mb-4">
+          {blog?.createdAt ? new Date(blog.createdAt).toLocaleString() : "Unknown date"}
+        </div>
+        <p className="text-lg text-gray-800 whitespace-pre-wrap">
+          {blog?.description || "No content available."}
+        </p>
       </div>
     </div>
   );
