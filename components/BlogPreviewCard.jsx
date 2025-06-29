@@ -1,9 +1,9 @@
-export default function BlogPreviewCard({ title = "Untitled", description = "No description", author = "Anonymous" }) {
+export default function BlogPreviewCard({ title = 'Untitled', description = 'No description available', author = 'Unknown' }) {
   return (
-    <div className="border rounded-lg shadow p-4 bg-white dark:bg-gray-800">
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
-      <p className="text-gray-700 mb-2">{description}</p>
-      <div className="text-sm text-gray-500">By {author}</div>
+    <div className="p-4 border rounded-lg bg-white dark:bg-gray-800 shadow">
+      <h2 className="text-xl font-semibold">{title}</h2>
+      <p className="text-gray-600 dark:text-gray-300 mt-1">{description}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Author: {author}</p>
     </div>
   );
 }
