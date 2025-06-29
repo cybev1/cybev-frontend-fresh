@@ -1,10 +1,11 @@
+import { useState } from 'react';
+import PostEditor from '../../components/PostEditor';
 
-import PostEditor from '@/components/PostEditor';
-export default function WriteBlogPostPage() {
+export default function WritePost() {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Write Blog Post</h1>
-      <PostEditor blogMode />
+    <div className="min-h-screen p-6">
+      <h1 className="text-2xl font-bold mb-4">Write for Your Blog</h1>
+      <PostEditor />
     </div>
   );
 }
