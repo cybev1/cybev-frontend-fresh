@@ -1,14 +1,9 @@
-import React from 'react';
-
-export default function BlogPreviewCard({ title, description, image, domain }) {
+export default function BlogPreviewCard({ title = "Untitled", description = "No description", author = "Anonymous" }) {
   return (
-    <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-      <img src={image || '/placeholder.png'} alt="Preview" className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h2 className="text-xl font-semibold mb-1">{title}</h2>
-        <p className="text-sm text-gray-600">{description}</p>
-        <p className="text-xs text-blue-500 mt-2">{domain}</p>
-      </div>
+    <div className="border rounded-lg shadow p-4 bg-white dark:bg-gray-800">
+      <h2 className="text-2xl font-bold mb-2">{title}</h2>
+      <p className="text-gray-700 mb-2">{description}</p>
+      <div className="text-sm text-gray-500">By {author}</div>
     </div>
   );
 }

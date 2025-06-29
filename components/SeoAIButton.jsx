@@ -1,21 +1,10 @@
-import React, { useState } from 'react';
-
 export default function SeoAIButton({ onGenerate }) {
-  const [loading, setLoading] = useState(false);
-
-  const handleClick = async () => {
-    setLoading(true);
-    await onGenerate();
-    setLoading(false);
-  };
-
   return (
     <button
-      onClick={handleClick}
-      disabled={loading}
-      className="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:opacity-90 transition"
+      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+      onClick={onGenerate}
     >
-      {loading ? 'Generating SEO...' : 'AI GENERATE SEO'}
+      Generate SEO
     </button>
   );
 }

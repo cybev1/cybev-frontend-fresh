@@ -1,19 +1,15 @@
-import React from 'react';
-
-export default function HostingPlans({ plans = [], onSelect, selectedPlan }) {
+export default function HostingPlans({ plans = [] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {plans.map((plan, idx) => (
-        <div
-          key={idx}
-          onClick={() => onSelect(plan)}
-          className={\`cursor-pointer rounded-2xl border p-6 shadow-md hover:shadow-xl transition-all duration-300 \${selectedPlan?.id === plan.id ? 'border-blue-500' : 'border-gray-200'}\`}
-        >
-          <h3 className="text-lg font-semibold mb-2">{plan.title}</h3>
-          <p className="text-sm text-gray-600">{plan.description}</p>
-          <p className="text-xl font-bold mt-4">{plan.price}</p>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {plans.length ? plans.map((plan, idx) => (
+        <div key={idx} className="p-4 border rounded-lg shadow bg-white dark:bg-gray-800">
+          <h3 className="text-xl font-semibold">{plan.title}</h3>
+          <p>{plan.description}</p>
+          <p className="font-bold">{plan.price}</p>
         </div>
-      ))}
+      )) : (
+        <p className="text-gray-500">No hosting plans available.</p>
+      )}
     </div>
   );
 }
